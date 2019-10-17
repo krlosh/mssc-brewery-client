@@ -17,7 +17,7 @@ class BreweryClientTest {
     private BreweryClient breweryClient;
 
     @Test
-    void getBeerById() {
+    void testGetBeerById() {
         BeerDto dto = breweryClient.getBeerById(UUID.randomUUID());
 
         assertNotNull(dto);
@@ -35,5 +35,10 @@ class BreweryClientTest {
     void testUpdateBeer() {
         BeerDto dto = BeerDto.builder().beerName("New beer").build();
         this.breweryClient.updateBeer(UUID.randomUUID(), dto);
+    }
+
+    @Test
+    void testDelete() {
+        this.breweryClient.deleteBeer(UUID.randomUUID());
     }
 }
