@@ -35,6 +35,10 @@ public class NIORestTemplateCustomizer implements RestTemplateCustomizer {
 
     @Override
     public void customize(RestTemplate restTemplate) {
-        restTemplate.setRequestFactory(this.clientHttpRequestFactory());
+        try {
+            restTemplate.setRequestFactory(this.clientHttpRequestFactory());
+        } catch (IOReactorException e) {
+            e.printStackTrace();
+        }
     }
 }
